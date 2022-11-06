@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { IEndereco } from './interface';
+import { ViaCepService } from './services/via-cep.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +15,9 @@ export class AppComponent { // tudo ocorre
 
 // injeção de depedencias é feita dentro do construtor   
   constructor(
-    private formBuilder : FormBuilder  //contruindo formulario
+    private formBuilder : FormBuilder,  //contruindo formulario
+    private viaCepService : ViaCepService,
+    private snackBar: MatSnackBar
   )
   {}
 
@@ -20,7 +25,20 @@ export class AppComponent { // tudo ocorre
     inputCep: ["", Validators.required]
   })
 
-     procurar(){
-      const valorInputCep = this.formulario.get('inputCep')?.value
-  }
+  endereco:IEndereco | undefined;
+
+  procurar(){
+    const valorInputCep = this.formulario.get('inputCep')?.value
+    this.viaCepService.buscarCep(valorInputCep).subscribe((enderecoRetornado) => {
+
+    if(enderecoRetornado.erro){
+      this.snackBar.open(`CEP ${valorInputCep} não encontrado`, "fechar")
+    }else {
+      this.endereco = enderecoRetornado;
+    }
+    })
+}
+apagar() {
+  this.endereco = undefined;
+}
 }

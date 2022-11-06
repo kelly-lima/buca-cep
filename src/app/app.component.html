@@ -1,16 +1,34 @@
-<main>
-  <div>
+<main class="container">
+  <div class="logo">
+    <img class="imgLogo" src="\assets\imagem.jpeg " alt="Logo dos Correios">
+  </div>
+
+  <div class="formulario">
     <form (ngSubmit)="procurar()" [formGroup]="formulario">
-      <img src="../assets/logo.png" alt="">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Postal Code</mat-label>
         <input matInput #postalCode maxlength="8" placeholder="Digite seu cep" value="" formControlName="inputCep">
         <mat-hint align="end">{{postalCode.value.length}} / 8 </mat-hint>
       </mat-form-field>
+
       <button>
         <mat-icon>search</mat-icon>
       </button>
+
     </form>
 
   </div>
+
+  <div class="cep" *ngIf="endereco != undefined">
+
+    <button class="close-button" (click)="apagar()">
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <p>Logradouro/Nome: {{endereco.logradouro}}</p>
+    <p>Bairro/Distrito: {{endereco.bairro}}</p>
+    <p>Localidade/UF: {{endereco.uf}}</p>
+    <p>CEP: {{endereco.cep}}</p>
+  </div>
+
 </main>

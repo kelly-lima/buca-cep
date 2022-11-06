@@ -1,0 +1,68 @@
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px; 
+    
+}
+
+.imgLogo{
+    width: 280px;
+}
+
+form{
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+
+
+}
+
+
+
+input{
+    border: solid 1px rgb(197, 197, 197);
+    
+}
+
+button{
+    border: solid 1px rgb(197, 197, 197);
+    transition: 1.7s;
+
+}
+
+button:hover{
+   background: rgb(212, 212, 212);
+   transition: 1.7s;
+   
+
+}
+
+
+.cep {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    flex-flow: column nowrap;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 200px;
+    position: relative;
+
+}
+
